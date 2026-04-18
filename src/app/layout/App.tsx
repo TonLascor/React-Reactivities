@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import './App.css';
 import { Typography, List, ListItem, ListItemText } from "@mui/material";
 import axios from "axios";
+import './styles.css';
+import NavBar from "./NavBar";
 
 function App() {
 
@@ -15,8 +16,7 @@ function App() {
   const title = 'Reactivities';
   return (
     <>
-      <Typography variant="h3">{title}</Typography>
-
+      <NavBar />
       <List>
         {activities.map((activity: Activity) => (
           <ListItem key={activity.id}>
@@ -28,6 +28,6 @@ function App() {
       </List>
     </>
   );
-}
+};
 
 export default App;
