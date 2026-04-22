@@ -4,7 +4,11 @@ import Toolbar from '@mui/material/Toolbar';
 import { Button, Container, MenuItem, Typography } from "@mui/material";
 import { Group } from "@mui/icons-material";
 
-function NavBar() {
+type Props = {
+  openForm: () => void;
+}
+
+function NavBar({openForm}: Props) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -31,7 +35,12 @@ function NavBar() {
                 Contacts
               </MenuItem>
             </Box>
-            <Button size='large' variant='contained' color="warning">
+            <Button 
+            size='large' 
+            variant='contained' 
+            color="warning"
+            onClick={openForm}
+            >
               CreateActivity
             </Button>
           </Toolbar>

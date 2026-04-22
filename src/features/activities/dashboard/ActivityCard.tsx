@@ -1,10 +1,12 @@
-import { Button, Card, CardActions, CardContent, Chip, Typography } from "@mui/material";
+import { Box, Button, Card, CardActions, CardContent, Chip, Typography } from "@mui/material";
 
 type Props = {
     activity: Activity;
+    selectActivity: (id: string) => void;
+    deleteActivity: (id: string) => void;
 };
 
-function ActivityCard({ activity }: Props) {
+function ActivityCard({ activity, selectActivity, deleteActivity }: Props) {
     return (
         <Card sx={{ borderRadius: 3 }}>
             <CardContent>
@@ -13,9 +15,18 @@ function ActivityCard({ activity }: Props) {
                 <Typography variant='body2'>{activity.description}</Typography>
                 <Typography variant='body2'>{activity.city}/ {activity.venue}</Typography>
             </CardContent>
-            <CardActions>
+            <CardActions sx={{ display: 'flex', justifyContent: "space-between", pb: 2 }}>
                 <Chip label={activity.category} variant="outlined" />
-                <Button size="medium" variant="contained">View</Button>
+                <Box display={'flex'} gap={3}>
+                    <Button onClick={() => selectActivity(activity.id)} size="medium" variant="contained">View</Button>
+                    <Button onClick={() => deleteActivity(activity.id)}
+                        size="medium"
+                        variant="contained"
+                        color="error"
+                    >
+                        Delete
+                    </Button>
+                </Box>
             </CardActions>
         </Card>
     );
